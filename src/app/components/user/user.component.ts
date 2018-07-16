@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-user',
@@ -13,8 +14,10 @@ export class UserComponent implements OnInit {
   hobbies: string[];
   hello: any;
   email:string;
+  posts:Post[];
+  renderEdit:boolean = false;
 
-  constructor() {
+  constructor(private dataService:DataService) {
     //this.name = name
     console.log('contructor run...')
   }
@@ -22,17 +25,21 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit run...')
     this.name = 'Ignacio Yanjari';
-    this.age = 30;
+    this.age = 21;
     this.address = {
       street: 'Telescopio',
       city: 'Santiago',
-      state: 'RM'
+      state: 'Región Metropolitana'
     };
     this.hobbies = [
-      "Write Code", "Watch movies",
-      "Listen to music", "Sleep"
+      "Escribir Código", "Ver Series",
+      "Escuchar Cumbia", "Dormir"
     ];
-    this.email = "test@test.com";
+    this.email = "ignacio.yanjari@mail.udp.cl";
+    this.dataService.getPosts().subscribe( posts => {
+      // console.log(posts)
+      this.posts = posts;
+    })
   }
   addHobby(hobby){
     this.hobbies.unshift(hobby);
@@ -46,10 +53,21 @@ export class UserComponent implements OnInit {
     }
     console.log(`${hobby} Deleted `)
   }
-
+  changeRenderEdit(){
+    console.log('entra')
+    this.renderEdit = !this.renderEdit;
+  }
 }
+
 interface Address{
   street:string,
   city:string,
   state:string
+}
+
+interface Post{
+  body:string,
+  id:number,
+  title:string,
+  userId:number
 }

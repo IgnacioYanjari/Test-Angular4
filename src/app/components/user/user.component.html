@@ -1,7 +1,12 @@
 <div class="container">
 
   <div class="container">
-    <h1 class="mt-5" style="text-align: center" > {{name}}</h1>
+    <h1 class="mt-5" style="text-align: center" > {{name}}
+      <button (click)="changeRenderEdit()" type="button" class="btn btn-success">
+          Editar usuario
+      </button>
+    </h1>
+
     <br/>
     <ul class="list-group list-group-flush">
         <li class="list-group-item" > Age : {{age}}</li>
@@ -13,8 +18,9 @@
   </div>
 
 
-  <div class="container">
-    <h2 style="text-align: center" > Edit User </h2>
+
+  <div *ngIf=renderEdit class="container">
+    <h2 style="text-align: center" > Editar Usuario </h2>
     <div class="jumbotron">
       <form>
         <div class="form-group">
@@ -46,11 +52,11 @@
   </div>
 
   <div class="container">
-    <h2 style="text-align: center" > List of Hobbies </h2>
+    <h2 style="text-align: center" > Lista de Hobbies </h2>
 
     <form (submit)="addHobby(hobby.value)">
       <div class="form-group">
-          <label for="hobby"> Hobby </label> <br>
+          <label for="hobby"> Agregar nuevo hobby </label> <br>
           <input id="hobby" class="form-control" type="text" #hobby>
       </div>
     </form>
@@ -59,7 +65,7 @@
         <tr>
           <th scope="col"> # </th>
           <th scope="col"> Hobby </th>
-          <th scope="col"> Delete </th>
+          <th scope="col"> Borrar </th>
         </tr>
       </thead>
       <tbody>
@@ -78,6 +84,19 @@
     </table>
   </div>
 
+
+  <div class="container">
+    <h2 style="text-align: center" > Posts </h2>
+    <br/>
+    <div *ngFor="let post of posts">
+      <h4 >
+        {{post.title}}
+      </h4>
+      <p>
+        {{post.body}}
+      </p>
+    </div>
+  </div>
 
 
 </div>
