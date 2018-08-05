@@ -1,102 +1,97 @@
 <div class="container">
 
-  <div class="container">
-    <h1 class="mt-5" style="text-align: center" > {{name}}
-      <button (click)="changeRenderEdit()" type="button" class="btn btn-success">
-          Editar usuario
-      </button>
-    </h1>
+    <div class="container">
+        <h1 class="mt-5 ml-3 text-center"> {{name}}
+            <button (click)="changeRenderEdit()" type="button" class="btn btn-success">
+            Editar usuario
+          </button>
+        </h1>
 
-    <br/>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item" > Age : {{age}}</li>
-        <li class="list-group-item" > Email : {{email}}</li>
-        <li class="list-group-item" > Calle : {{address.street}}</li>
-        <li class="list-group-item" > Ciudad : {{address.city}}</li>
-        <li class="list-group-item" > Región : {{address.state}}</li>
-    </ul>
-  </div>
-
-
-
-  <div *ngIf=renderEdit class="container">
-    <h2 style="text-align: center" > Editar Usuario </h2>
-    <div class="jumbotron">
-      <form>
-        <div class="form-group">
-            <label for="name"> Name : </label> <br/>
-            <input id="name" type="text" class="form-control"  [(ngModel)] = "name" name="name">
-        </div>
-        <div class="form-group" >
-            <label for="age"> Age : </label> <br/>
-            <input id="age" type="text" class="form-control" [(ngModel)] = "age" name="age" >
-        </div>
-        <div class="form-group" >
-            <label for="email"> Email : </label> <br/>
-            <input id="email" type="text"  class="form-control" [(ngModel)] = "email" name="email">
-        </div>
-        <div class="form-group" >
-            <label for="street"> Street : </label> <br/>
-            <input id="street" type="text" class="form-control" [(ngModel)] = "address.street" name="street">
-        </div>
-        <div class="form-group" >
-            <label for="city"> City : </label> <br/>
-            <input id="city" type="text" class="form-control" [(ngModel)] = "address.city" name="city">
-        </div>
-        <div class="form-group" >
-            <label for="state"> State : </label> <br/>
-            <input id="state" type="text"  class="form-control" [(ngModel)] = "address.state" name="state">
-        </div>
-      </form>
+        <br/>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Age : {{age}}</li>
+            <li class="list-group-item"> Email : {{email}}</li>
+            <li class="list-group-item"> Calle : {{address.street}}</li>
+            <li class="list-group-item"> Ciudad : {{address.city}}</li>
+            <li class="list-group-item"> Región : {{address.state}}</li>
+        </ul>
     </div>
-  </div>
-
-  <div class="container">
-    <h2 style="text-align: center" > Lista de Hobbies </h2>
-
-    <form (submit)="addHobby(hobby.value)">
-      <div class="form-group">
-          <label for="hobby"> Agregar nuevo hobby </label> <br>
-          <input id="hobby" class="form-control" type="text" #hobby>
-      </div>
-    </form>
-    <table class="table mb-5">
-      <thead>
-        <tr>
-          <th scope="col"> # </th>
-          <th scope="col"> Hobby </th>
-          <th scope="col"> Borrar </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let hobby of hobbies; let i = index;">
-          <th scope="row">{{i+1}}</th>
-          <td>{{hobby}} </td>
-          <td>
-            <button type="button" class="btn btn-danger"
-              (click) = "deleteHobby(hobby)"
-              >
-              X
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
 
-  <div class="container">
-    <h2 style="text-align: center" > Posts </h2>
-    <br/>
-    <div *ngFor="let post of posts">
-      <h4 >
-        {{post.title}}
-      </h4>
-      <p>
-        {{post.body}}
-      </p>
+
+    <div *ngIf=renderEdit class="container">
+        <h2 style="text-align: center"> Editar Usuario </h2>
+        <div class="jumbotron">
+            <form>
+                <div class="form-group">
+                    <label for="name"> Name : </label> <br/>
+                    <input id="name" type="text" class="form-control" [(ngModel)]="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="age"> Age : </label> <br/>
+                    <input id="age" type="text" class="form-control" [(ngModel)]="age" name="age">
+                </div>
+                <div class="form-group">
+                    <label for="email"> Email : </label> <br/>
+                    <input id="email" type="text" class="form-control" [(ngModel)]="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="street"> Street : </label> <br/>
+                    <input id="street" type="text" class="form-control" [(ngModel)]="address.street" name="street">
+                </div>
+                <div class="form-group">
+                    <label for="city"> City : </label> <br/>
+                    <input id="city" type="text" class="form-control" [(ngModel)]="address.city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="state"> State : </label> <br/>
+                    <input id="state" type="text" class="form-control" [(ngModel)]="address.state" name="state">
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 
+    <div class="container">
+        <h2 style="text-align: center"> Lista de Hobbies </h2>
 
+        <form (submit)="addHobby(hobby.value)">
+            <div class="form-group">
+                <label for="hobby"> Agregar nuevo hobby </label> <br>
+                <input id="hobby" class="form-control" type="text" #hobby>
+            </div>
+        </form>
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col"> # </th>
+                    <th scope="col"> Hobby </th>
+                    <th scope="col"> Borrar </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hobby of hobbies; let i = index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{hobby}} </td>
+                    <td> <button type="button" class="btn btn-danger" (click)="deleteHobby(hobby)">
+                            X
+                      </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center"> Posts </h2>
+        <br/>
+        <div *ngFor="let post of posts; let i = index;" class="card mb-4">
+            <div class="card-header">
+                Titulo : {{post.title}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Contenido : </h5>
+                <p class="card-text">{{post.body}}</p>
+            </div>
+        </div>
+    </div>
 </div>
